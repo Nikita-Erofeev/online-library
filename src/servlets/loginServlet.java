@@ -15,6 +15,7 @@ import java.sql.SQLException;
 
 public class loginServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(loginServlet.class);
+    private UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +31,7 @@ public class loginServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         try {
-            User user = UserService.getUserByLoginPass(userName, password);
+            User user = userService.getUserByLoginPass(userName, password);
             if (user == null) {
                 LOGGER.info("User == null");
                 resp.sendRedirect("/site2/login");
