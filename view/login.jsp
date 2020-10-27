@@ -3,6 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<!-- Настройка viewport -->
+	<meta http-equiv="Content-Type" content="text/html charset=utf-8"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<link rel="stylesheet" type="text/css" href="">
 	<link rel="stylesheet" type="text/css" href="resources/css/my.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.grid.css">

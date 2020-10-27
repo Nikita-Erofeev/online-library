@@ -7,6 +7,22 @@
 <!--  Filters  -->
 
   <filter>
+    <filter-name>Charset Filter</filter-name>
+    <filter-class>filters.CharsetFilter</filter-class>
+    <init-param>
+      <param-name>requestEncoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>Charset Filter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+
+  <filter>
     <filter-name>AuthFilter</filter-name>
     <filter-class>filters.AuthFilter</filter-class>
   </filter>
@@ -14,9 +30,17 @@
   <filter-mapping>
     <filter-name>AuthFilter</filter-name>
     <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
 
 <!--  JSP   -->
+
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+    </jsp-property-group>
+  </jsp-config>
 
   <servlet>
     <servlet-name>loginJsp</servlet-name>
@@ -24,8 +48,8 @@
   </servlet>
 
   <servlet>
-    <servlet-name>user</servlet-name>
-    <jsp-file>/view/user/user.jsp</jsp-file>
+    <servlet-name>user_books</servlet-name>
+    <jsp-file>/view/user/user_books.jsp</jsp-file>
   </servlet>
 
   <servlet>
@@ -42,11 +66,25 @@
 
   <servlet-mapping>
     <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/</url-pattern>
     <url-pattern>/login</url-pattern>
+    <url-pattern>/index</url-pattern>
   </servlet-mapping>
 
 
-<!--  Resources -->
+
+  <servlet>
+    <servlet-name>UserBooksServlet</servlet-name>
+    <servlet-class>servlets.user.UserBooksServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UserBooksServlet</servlet-name>
+    <url-pattern>/my_books</url-pattern>
+  </servlet-mapping>
+
+
+  <!--  Resources -->
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/resources/*</url-pattern>

@@ -6,10 +6,7 @@ import org.slf4j.LoggerFactory;
 import services.UserService;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -28,7 +25,6 @@ public class loginServlet extends HttpServlet {
         String password = req.getParameter("password");
         LOGGER.info("Login {}", userName);
         LOGGER.info("Password {}", password);
-
         HttpSession session = req.getSession();
         try {
             User user = userService.getUserByLoginPass(userName, password);
@@ -39,13 +35,21 @@ public class loginServlet extends HttpServlet {
                 LOGGER.info("User != null");
                 session.setAttribute("userID", user.getId());
                 session.setAttribute("userLogin", user.getLogin());
-                req.setAttribute("user", user);
-                req.getRequestDispatcher("/view/user/user.jsp").forward(req, resp);
+
+                /*Куки для логина*/
+//                Cookie cookieID = new Cookie("userID", String.valueOf(user.getId()));
+//                Cookie cookieLogin = new Cookie("userLogin", user.getLogin());
+//                cookieID.setMaxAge(60 * 60);
+//                cookieLogin.setMaxAge(60 * 60);
+//                resp.addCookie(cookieID);
+//                resp.addCookie(cookieLogin);
+
+                LOGGER.debug("SEND REDIRECT /my_books");
+                resp.sendRedirect(req.getContextPath() + "/my_books");
             }
         } catch (SQLException | ClassNotFoundException e) {
             req.setAttribute("error", e);
             req.getRequestDispatcher("/WEB-INF/errorPage.jsp").forward(req, resp);
         }
-//        super.doPost(req, resp);
     }
 }
