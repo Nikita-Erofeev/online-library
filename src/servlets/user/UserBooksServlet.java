@@ -1,10 +1,7 @@
 package servlets.user;
 
 import model.Book;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import services.UserService;
-import servlets.loginServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

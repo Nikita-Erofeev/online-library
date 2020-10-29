@@ -53,6 +53,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>user_library</servlet-name>
+    <jsp-file>/view/user/user_library.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
     <servlet-name>errorPage</servlet-name>
     <jsp-file>/WEB-INF/errorPage.jsp</jsp-file>
   </servlet>
@@ -72,6 +77,16 @@
   </servlet-mapping>
 
 
+  <servlet>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>servlets.logoutServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
 
   <servlet>
     <servlet-name>UserBooksServlet</servlet-name>
@@ -81,6 +96,17 @@
   <servlet-mapping>
     <servlet-name>UserBooksServlet</servlet-name>
     <url-pattern>/my_books</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>UserLibraryServlet</servlet-name>
+    <servlet-class>servlets.user.UserLibraryServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UserLibraryServlet</servlet-name>
+    <url-pattern>/library</url-pattern>
   </servlet-mapping>
 
 

@@ -22,7 +22,8 @@
 		<div class="container">
 		  <div class="row align-items-start">
 		    <div class="col">
-		    	<a href="" class="text-white h6">Erofeev.99@mail.ru</a>
+		    	<a href="my_books" class="text-white h6"> <c:out value="${sessionScope.userLogin}"/></a>
+		    	<a href="logout" class="text-white">X</a>
 		    </div>
    		  </div>
 		   <div class="row align-items-center">
@@ -31,7 +32,7 @@
 		    	</div>
 		   	</div>
 		  <div class="row align-items-end">
-   
+   			<a href="library" class="text-white h6">Библиотека</a>
 		</div>
 	</div>
 	</nav>
@@ -39,9 +40,10 @@
 		<div class="row">
 			<div class="col-4 h5">Автор</div>
 			<div class="col-4 h5">Название книги</div>
-			<div class="col-4 h5">Скачать</div>
+			<div class="col-4 h5">Действие</div>
 		</div>
 
+			<!-- цикл -->
         <c:forEach var="book" items="${books}">
                 <div class="row mt-2">
                 	<div class="col-4 h6 vertical-allign">${book.author}</div>
@@ -52,18 +54,9 @@
                 	    </div>
                 </div>
             </c:forEach>
-		<!-- цикл -->
+			<!-- конец цикла -->
 
-		<!-- конец цикла -->
-
-		<!-- <div class="row mt-2">
-			<div class="col-4 h6">Пушкин А.С.</div>
-			<div class="col-4 h6">А в душе я танцую</div>
-			<div class="col-4 h6">
-				<button type="button" class="btn btn-success">Читать</button>
-				<button type="button" class="btn btn-info">Скачать</button>
-			</div>
-			-->
+	
 		</div>
 	</div>
 </body>

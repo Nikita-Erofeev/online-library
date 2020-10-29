@@ -7,6 +7,7 @@ public class Book {
     private String genre;
     private String description;
     private int price;
+    private boolean isAvailable;
 
     public Book(int id){
         this.id = id;
@@ -20,6 +21,16 @@ public class Book {
         this.price = price;
     }
 
+    public Book(int id, String author, String name, String genre, String description, int price, boolean isAvailable){
+        this.id = id;
+        this.author = author;
+        this.name = name;
+        this.genre = genre;
+        this.description = description;
+        this.price = price;
+        this.isAvailable = isAvailable;
+    }
+
     public Book(int id, String author, String name, String genre, String description, int price){
         this.id = id;
         this.author = author;
@@ -27,6 +38,7 @@ public class Book {
         this.genre = genre;
         this.description = description;
         this.price = price;
+        this.isAvailable = false;
     }
 
     public String getName() {
@@ -63,6 +75,18 @@ public class Book {
 
     public String getAuthor() {
         return author;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
     @Override
