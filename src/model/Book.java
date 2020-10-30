@@ -8,16 +8,16 @@ public class Book {
     private String description;
     private int price;
     private String path;
-    private boolean isAvailable;
+    private boolean isAvailable = false;
 
     public Book(int id){
         this.id = id;
     }
 
-    public Book(String author, String name, String genre, String description, int price){
+    public Book(int id, String author, String name, String description, int price){
+        this.id = id;
         this.author = author;
         this.name = name;
-        this.genre = genre;
         this.description = description;
         this.price = price;
     }
@@ -98,11 +98,11 @@ public class Book {
         return id;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
-    public boolean isAvailable() {
+    public boolean getIsAvailable() {
         return isAvailable;
     }
 

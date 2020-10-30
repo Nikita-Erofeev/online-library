@@ -124,6 +124,25 @@
     <url-pattern>/read</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>AddBookToUserServlet</servlet-name>
+    <servlet-class>servlets.user.AddBookToUserServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddBookToUserServlet</servlet-name>
+    <url-pattern>/add</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PurchaseBookServlet</servlet-name>
+    <servlet-class>servlets.user.PurchaseBookServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PurchaseBookServlet</servlet-name>
+    <url-pattern>/purchase</url-pattern>
+  </servlet-mapping>
 
   <!--  Resources -->
   <servlet-mapping>

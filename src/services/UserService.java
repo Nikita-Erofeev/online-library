@@ -23,20 +23,31 @@ public class UserService {
         }
     }
 
-    public List<Book> getBooksByUserID(int userID) throws ClassNotFoundException, SQLException{
-        if(userID <= 0){
+    public List<Book> getBooksByUserID(int userID) throws ClassNotFoundException, SQLException {
+        if (userID <= 0) {
             return null;
         } else {
             return userDao.getBooksByUserID(userID);
         }
     }
 
-    public List<Book> getBookBySearch(int userId, String search) throws ClassNotFoundException, SQLException{
+    public List<Book> getBookBySearch(int userId, String search) throws ClassNotFoundException, SQLException {
         return userDao.getBookBySearch(userId, search);
     }
 
-    public String readBook(int userId, int bookId) throws ClassNotFoundException, SQLException{
+    public String readBook(int userId, int bookId) throws ClassNotFoundException, SQLException {
         return userDao.readBook(userId, bookId);
     }
 
+    public boolean checkBookIsAvailable(int userId, int bookId) throws ClassNotFoundException, SQLException {
+        return userDao.checkBookIsAvailable(userId, bookId);
+    }
+
+    public Book getBookById(int bookId) throws ClassNotFoundException, SQLException {
+        return userDao.getBookById(bookId);
+    }
+
+    public boolean buyBook(int userId, int bookId, String login) throws ClassNotFoundException, SQLException {
+        return userDao.buyBook(userId, bookId, login);
+    }
 }

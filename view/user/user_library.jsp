@@ -68,8 +68,18 @@
 			<div class="col-3 h6">${book.name}</div>
 			<div class="col-3 h6">${book.description}</div>
 			<div class="col-3 h6">
-				<button type="button" class="btn btn-success">Читать</button>
-				<button type="button" class="btn btn-info">Скачать</button>
+			     <c:if test="${book.isAvailable == true}">
+                            <a href="read?id=${book.id}"><button type="button" class="btn btn-success">Читать</button></a>
+                            <button type="button" class="btn btn-info">Скачать</button>
+                 </c:if>
+				<c:if test="${book.isAvailable == false}">
+				    <c:if test="${book.price == 0}">
+				        <a href="add?id=${book.id}"><button type="button" class="btn btn-success">Добавить</button></a>
+				    </c:if>
+				    <c:if test="${book.price > 0}">
+                    	<a href="purchase?id=${book.id}"><button type="button" class="btn btn-success">${book.price} руб.</button></a>
+                    </c:if>
+                </c:if>
 			</div>
 		</div>
 	</c:forEach>
