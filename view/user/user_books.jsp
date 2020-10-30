@@ -49,7 +49,7 @@
                 	<div class="col-4 h6 vertical-allign">${book.author}</div>
                 	    <div class="col-4 h6">${book.name}</div>
                 		<div class="col-4 h6">
-                			<button type="button" class="btn btn-success">Читать</button>
+                			<a href="read?id=${book.id}"><button type="button" class="btn btn-success">Читать</button></a>
                 			<button type="button" class="btn btn-info">Скачать</button>
                 	    </div>
                 </div>

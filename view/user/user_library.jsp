@@ -62,7 +62,7 @@
 			<div class="col-3 h5">Действие</div>
 		</div>
 
-		<!-- <c:forEach var="book" items="${books}">
+		<c:forEach var="book" items="${books}">
 		<div class="row mt-2">
 			<div class="col-3 h6 vertical-allign">${book.author}</div>
 			<div class="col-3 h6">${book.name}</div>
@@ -72,7 +72,7 @@
 				<button type="button" class="btn btn-info">Скачать</button>
 			</div>
 		</div>
-	</c:forEach> -->
+	</c:forEach>
 
 
 </div>

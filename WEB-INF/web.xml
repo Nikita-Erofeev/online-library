@@ -58,6 +58,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>reader</servlet-name>
+    <jsp-file>/view/user/reader.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
     <servlet-name>errorPage</servlet-name>
     <jsp-file>/WEB-INF/errorPage.jsp</jsp-file>
   </servlet>
@@ -107,6 +112,16 @@
   <servlet-mapping>
     <servlet-name>UserLibraryServlet</servlet-name>
     <url-pattern>/library</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ReaderServlet</servlet-name>
+    <servlet-class>servlets.user.ReaderServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ReaderServlet</servlet-name>
+    <url-pattern>/read</url-pattern>
   </servlet-mapping>
 
 

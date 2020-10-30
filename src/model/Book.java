@@ -7,6 +7,7 @@ public class Book {
     private String genre;
     private String description;
     private int price;
+    private String path;
     private boolean isAvailable;
 
     public Book(int id){
@@ -21,17 +22,18 @@ public class Book {
         this.price = price;
     }
 
-    public Book(int id, String author, String name, String genre, String description, int price, boolean isAvailable){
+    public Book(int id, String author, String name, String genre, String description, int price, String path, boolean isAvailable){
         this.id = id;
         this.author = author;
         this.name = name;
         this.genre = genre;
         this.description = description;
         this.price = price;
+        this.path = path;
         this.isAvailable = isAvailable;
     }
 
-    public Book(int id, String author, String name, String genre, String description, int price){
+    public Book(int id, String author, String name, String genre, String description, int price, String path){
         this.id = id;
         this.author = author;
         this.name = name;
@@ -39,6 +41,17 @@ public class Book {
         this.description = description;
         this.price = price;
         this.isAvailable = false;
+        this.path = path;
+    }
+
+    public Book(int id, String author, String name, String description, int price, String path, boolean isAvailable){
+        this.id = id;
+        this.author = author;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.isAvailable = isAvailable;
+        this.path = path;
     }
 
     public String getName() {
@@ -55,6 +68,10 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public String getDescription() {

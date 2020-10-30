@@ -19,3 +19,7 @@
     pointer-events: none;
     color: #aaa;
 }
+.word-wrap{
+	word-wrap: break-word;
+	font-size: 15px;
+}

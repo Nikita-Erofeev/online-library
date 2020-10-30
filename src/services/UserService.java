@@ -2,15 +2,11 @@ package services;
 
 import dao.UserDao;
 import daoImpl.UserDaoImpl;
-import jdbc.DatabaseConnection;
 import model.Book;
 import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -35,5 +31,12 @@ public class UserService {
         }
     }
 
+    public List<Book> getBookBySearch(int userId, String search) throws ClassNotFoundException, SQLException{
+        return userDao.getBookBySearch(userId, search);
+    }
+
+    public String readBook(int userId, int bookId) throws ClassNotFoundException, SQLException{
+        return userDao.readBook(userId, bookId);
+    }
 
 }
