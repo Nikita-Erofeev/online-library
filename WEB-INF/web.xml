@@ -63,6 +63,28 @@
   </servlet>
 
   <servlet>
+    <servlet-name>myAdmin</servlet-name>
+    <jsp-file>/view/admin/myAdmin.jsp</jsp-file>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>myAdmin</servlet-name>
+    <url-pattern>/my_admin</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>addAuthorAdmin</servlet-name>
+    <jsp-file>/view/admin/add_author.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+    <servlet-name>addBookAdmin</servlet-name>
+    <jsp-file>/view/admin/add_book.jsp</jsp-file>
+  </servlet>
+
+
+  <servlet>
     <servlet-name>errorPage</servlet-name>
     <jsp-file>/WEB-INF/errorPage.jsp</jsp-file>
   </servlet>
@@ -142,6 +164,37 @@
   <servlet-mapping>
     <servlet-name>PurchaseBookServlet</servlet-name>
     <url-pattern>/purchase</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <servlet-class>servlets.admin.AdminLoginServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddAuthorServlet</servlet-name>
+    <servlet-class>servlets.admin.AddAuthorServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddAuthorServlet</servlet-name>
+    <url-pattern>/add_author</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddBookServlet</servlet-name>
+    <servlet-class>servlets.admin.AddBookServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddBookServlet</servlet-name>
+    <url-pattern>/add_book</url-pattern>
   </servlet-mapping>
 
   <!--  Resources -->

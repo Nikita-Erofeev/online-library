@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AuthFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthFilter.class);
@@ -22,12 +24,29 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String loginURL = "/site2/login";
+        String adminURL = "/site2/admin";
+
+        Set<String> adminUrls = new HashSet<>();
+        adminUrls.add("/site2/my_admin");
+        adminUrls.add("/site2/add_author");
+        adminUrls.add("/site2/add_book");
+        adminUrls.add("/site2/change_author");
+        adminUrls.add("/site2/change_book");
+        adminUrls.add("/site2/report");
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
+
+        boolean loggedAsAdmin = session != null && session.getAttribute("adminID") != null;
+        boolean requestToAdmin = adminUrls.contains(request.getRequestURI());
+
         boolean loggedIn = session != null && session.getAttribute("userID") != null;
-        boolean loginRequest = request.getRequestURI().equals(loginURL);
-        if (loggedIn || loginRequest) {
+        boolean loginRequest = request.getRequestURI().equals(loginURL) || request.getRequestURI().equals(adminURL);
+
+        if((loggedAsAdmin & requestToAdmin) || loginRequest){
+            filterChain.doFilter(request, response);
+        } else if ((loggedIn & !requestToAdmin) || loginRequest) {
 //            LOGGER.debug("BOOL in {} req {}", loggedIn, loginRequest);
             filterChain.doFilter(request, response);
         } else {

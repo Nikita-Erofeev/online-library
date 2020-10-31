@@ -32,7 +32,7 @@
 			Стоимость: <input class="form-control" type="text" id="price" name="price" value="<c:out value="${book.price}"/>" readonly>
 			<input type="hidden" name="book_id" value="<c:out value="${book.id}"/>">
 			<button type="submit" class="btn btn-primary mt-2">Купить</button>
-			<a href="my_books"><button type="button" class="btn btn-danger mt-2">Отменить покупку</button></a>
+			<a href="my_books"><button type="button" class="btn btn-danger mt-2">Вернуться</button></a>
 		</div>
 	</form>
 	</div>

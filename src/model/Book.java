@@ -14,6 +14,9 @@ public class Book {
         this.id = id;
     }
 
+    public Book(){
+    }
+
     public Book(int id, String author, String name, String description, int price){
         this.id = id;
         this.author = author;
@@ -104,6 +107,14 @@ public class Book {
 
     public boolean getIsAvailable() {
         return isAvailable;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @Override
