@@ -22,7 +22,7 @@ public class AdminService {
     }
 
     public boolean addAuthor(String firstname, String lastname, String patronymic) throws SQLException, ClassNotFoundException {
-        if(firstname.equals("") || lastname.equals("") || patronymic.equals("")){
+        if (firstname.equals("") || lastname.equals("") || patronymic.equals("")) {
             return false;
         } else {
             adminDao.addAuthor(firstname, lastname, patronymic);
@@ -30,18 +30,26 @@ public class AdminService {
         }
     }
 
-    public List<Author> getAllAuthors() throws SQLException, ClassNotFoundException{
+    public List<Author> getAllAuthors() throws SQLException, ClassNotFoundException {
         return adminDao.getAllAuthors();
     }
 
-    public boolean addBook(Book book) throws SQLException, ClassNotFoundException{
+    public boolean addBook(Book book) throws SQLException, ClassNotFoundException {
         try {
             Integer.parseInt(book.getAuthor());
             Integer.parseInt(book.getGenre());
-        } catch (ClassCastException ex){
+        } catch (ClassCastException ex) {
             return false;
         }
         adminDao.addBook(book);
         return true;
+    }
+
+    public void deleteAuthorById(int authorId) throws SQLException, ClassNotFoundException {
+        adminDao.deleteAuthorById(authorId);
+    }
+
+    public void changeAuthor(Author author) throws SQLException, ClassNotFoundException {
+        adminDao.changeAuthor(author);
     }
 }

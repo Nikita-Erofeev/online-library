@@ -53,7 +53,7 @@ public class AdminDaoImpl implements AdminDao {
         PreparedStatement preparedStatement = connection.prepareStatement(select);
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Author> authors = new ArrayList<>();
-        while (resultSet.next()){
+        while (resultSet.next()) {
             authors.add(new Author(resultSet.getInt("id"), resultSet.getString("firstname"),
                     resultSet.getString("lastname"), resultSet.getString("patronymic")));
         }
@@ -74,6 +74,31 @@ public class AdminDaoImpl implements AdminDao {
         preparedStatement.setString(4, book.getDescription());
         preparedStatement.setInt(5, book.getPrice());
         preparedStatement.setString(6, book.getPath());
+        preparedStatement.execute();
+        preparedStatement.close();
+        connection.close();
+    }
+
+    @Override
+    public void deleteAuthorById(int authorId) throws SQLException, ClassNotFoundException {
+        Connection connection = DatabaseConnection.getConnection();
+        String add = "DELETE FROM author WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(add);
+        preparedStatement.setInt(1, authorId);
+        preparedStatement.execute();
+        preparedStatement.close();
+        connection.close();
+    }
+
+    @Override
+    public void changeAuthor(Author author) throws SQLException, ClassNotFoundException {
+        Connection connection = DatabaseConnection.getConnection();
+        String add = "UPDATE author SET firstname = ?, lastname = ?, patronymic = ? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(add);
+        preparedStatement.setString(1, author.getFirstname());
+        preparedStatement.setString(2, author.getLastname());
+        preparedStatement.setString(3, author.getPatronymic());
+        preparedStatement.setInt(4, author.getId());
         preparedStatement.execute();
         preparedStatement.close();
         connection.close();

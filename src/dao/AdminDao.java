@@ -12,4 +12,6 @@ public interface AdminDao {
     void addAuthor(String firstname, String lastname, String patronymic) throws SQLException, ClassNotFoundException;
     List<Author> getAllAuthors() throws SQLException, ClassNotFoundException;
     void addBook(Book book) throws SQLException, ClassNotFoundException;
+    void deleteAuthorById(int authorId) throws SQLException, ClassNotFoundException;
+    void changeAuthor(Author author) throws SQLException, ClassNotFoundException;
 }
