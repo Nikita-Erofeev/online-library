@@ -7,6 +7,7 @@ import model.Book;
 import model.User;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminService {
@@ -51,5 +52,25 @@ public class AdminService {
 
     public void changeAuthor(Author author) throws SQLException, ClassNotFoundException {
         adminDao.changeAuthor(author);
+    }
+
+    public List<Book> getAllBooks() throws SQLException, ClassNotFoundException {
+        return adminDao.getAllBooks();
+    }
+
+    public void deleteBookById(int bookId) throws SQLException, ClassNotFoundException {
+        adminDao.deleteBookById(bookId);
+    }
+
+    public void changeBook(Book book) throws SQLException, ClassNotFoundException {
+        adminDao.changeBook(book);
+    }
+
+    public List<String> getReport() throws SQLException, ClassNotFoundException{
+        List<String> result = new ArrayList<>();
+        result.add(adminDao.reportAllPurchase());
+        result.add(adminDao.reportSumOfPurchase());
+        result.add(adminDao.priceForBooks());
+        return result;
     }
 }

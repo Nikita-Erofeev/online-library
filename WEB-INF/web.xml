@@ -88,6 +88,11 @@
     <jsp-file>/view/admin/change_author.jsp</jsp-file>
   </servlet>
 
+  <servlet>
+    <servlet-name>changeBookAdmin</servlet-name>
+    <jsp-file>/view/admin/change_book.jsp</jsp-file>
+  </servlet>
+
 
   <servlet>
     <servlet-name>errorPage</servlet-name>
@@ -210,6 +215,36 @@
   <servlet-mapping>
     <servlet-name>ChangeAuthorServlet</servlet-name>
     <url-pattern>/change_author</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ChangeBookServlet</servlet-name>
+    <servlet-class>servlets.admin.ChangeBookServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ChangeBookServlet</servlet-name>
+    <url-pattern>/change_book</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ReportServlet</servlet-name>
+    <servlet-class>servlets.admin.ReportServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ReportServlet</servlet-name>
+    <url-pattern>/report</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>servlets.user.DownloadServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/download</url-pattern>
   </servlet-mapping>
 
   <!--  Resources -->

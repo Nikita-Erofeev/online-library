@@ -30,7 +30,6 @@ public class ReaderServlet extends HttpServlet {
                     BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
                     StringBuilder stringBuilder = new StringBuilder();
                     String line;
-                    String ls = System.getProperty("line.separator");
                     while( ( line = br.readLine() ) != null ) {
                         stringBuilder.append( line );
                         stringBuilder.append( "\n" );

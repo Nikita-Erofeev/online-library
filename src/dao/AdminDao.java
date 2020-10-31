@@ -14,4 +14,10 @@ public interface AdminDao {
     void addBook(Book book) throws SQLException, ClassNotFoundException;
     void deleteAuthorById(int authorId) throws SQLException, ClassNotFoundException;
     void changeAuthor(Author author) throws SQLException, ClassNotFoundException;
+    List<Book> getAllBooks() throws SQLException, ClassNotFoundException;
+    void deleteBookById(int bookId) throws SQLException, ClassNotFoundException;
+    void changeBook(Book book) throws SQLException, ClassNotFoundException;
+    String reportAllPurchase() throws SQLException, ClassNotFoundException;
+    String reportSumOfPurchase() throws SQLException, ClassNotFoundException;
+    String priceForBooks() throws SQLException, ClassNotFoundException;
 }

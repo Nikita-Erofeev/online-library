@@ -70,7 +70,7 @@
 			<div class="col-3 h6">
 			     <c:if test="${book.isAvailable == true}">
                             <a href="read?id=${book.id}"><button type="button" class="btn btn-success">Читать</button></a>
-                            <button type="button" class="btn btn-info">Скачать</button>
+                            <a href="download?id=${book.id}"><button type="button" class="btn btn-info">Скачать</button></a>
                  </c:if>
 				<c:if test="${book.isAvailable == false}">
 				    <c:if test="${book.price == 0}">

@@ -50,7 +50,7 @@
                 	    <div class="col-4 h6">${book.name}</div>
                 		<div class="col-4 h6">
                 			<a href="read?id=${book.id}"><button type="button" class="btn btn-success">Читать</button></a>
-                			<button type="button" class="btn btn-info">Скачать</button>
+                			<a href="download?id=${book.id}"><button type="button" class="btn btn-info">Скачать</button></a>
                 	    </div>
                 </div>
             </c:forEach>
