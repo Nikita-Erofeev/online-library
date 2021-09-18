@@ -1,0 +1,138 @@
+DROP DATABASE IF EXISTS sitedb;
+  CREATE DATABASE sitedb;
+  use sitedb;
+  
+  CREATE TABLE cheque(
+	id INT(12) AUTO_INCREMENT,
+    user_login VARCHAR(50) NOT NULL,
+    book VARCHAR(50) NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    price INT(4) NOT NULL,
+    PRIMARY KEY(id),
+    KEY(user_login),
+    KEY(book)
+  )ENGINE=INNODB DEFAULT CHARSET=utf8
+COLLATE utf8_general_ci;
+ 
+ Select book, SUM(price) as c FROM cheque group by book;
+  
+  CREATE TABLE admin(
+	id INT AUTO_INCREMENT,
+    login VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id),
+    KEY(login),
+    UNIQUE(login,password)
+  )ENGINE=INNODB DEFAULT CHARSET=utf8
+COLLATE utf8_general_ci;
+  
+  INSERT INTO admin VALUES (null, "admin@mail.ru", "test");
+  
+  CREATE TABLE user(
+	id INT AUTO_INCREMENT,
+    login VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id),
+    KEY(login),
+    UNIQUE(login,password)
+  )ENGINE=INNODB DEFAULT CHARSET=utf8
+COLLATE utf8_general_ci;
+
+CREATE TABLE `author` (
+  `id` int(12) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `patronymic` varchar(50) NOT NULL,
+  unique(firstname, lastname, patronymic)
+) ENGINE=INNODB DEFAULT CHARSET=utf8
+COLLATE utf8_general_ci;
+
+CREATE TABLE `book` (
+  `author_id` int(12) NOT NULL,
+  `id` int(12) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `genre_id` int(12) NOT NULL,
+  `description` varchar(400) NOT NULL,
+  `price` int(4) DEFAULT 0,
+  `path_book` varchar(100) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8
+COLLATE utf8_general_ci;
+
+CREATE TABLE `access_book` (
+  `id` int(12) NOT NULL,
+  `user_id` int(12) NOT NULL,
+  `book_id` int(12) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8
+COLLATE utf8_general_ci;
+
+CREATE TABLE `genre` (
+  `id` int(12) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8
+COLLATE utf8_general_ci;
+
+ALTER TABLE `access_book`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `user_id` (`user_id`);
+
+ALTER TABLE `author`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `book`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `author_id` (`author_id`);
+
+ALTER TABLE `genre`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `access_book`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+ALTER TABLE `author`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+ALTER TABLE `book`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+ALTER TABLE `genre`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+ALTER TABLE `user`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+ALTER TABLE `access_book`
+  ADD CONSTRAINT `access_book_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `access_book_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON DELETE CASCADE;
+COMMIT;
+  
+  INSERT INTO user (login, password) VALUES ("nikita@mail.ru","test");
+  INSERT INTO user (login, password) VALUES ("nikita1@mail.ru","test");
+  INSERT INTO user (login, password) VALUES ("nikita2@mail.ru","test");
+  INSERT INTO user (login, password) VALUES ("nikita3@mail.ru","test");
+  INSERT INTO user (login, password) VALUES ("nikita4@mail.ru","test");
+  INSERT INTO user (login, password) VALUES ("nikita5@mail.ru","test");
+  
+  INSERT INTO `genre` (`id`, `name`) VALUES
+(1, 'Роман'),
+(2, 'Повесть'),
+(3, 'Рассказ'),
+(4, 'Стихотворение'),
+(5, 'Поэма');
+
+INSERT INTO author VALUES(null, "Александр", "Пушкин","Сергеевич");
+  INSERT INTO book VALUES (11,null, "Дубровский", 1, 
+  "Данный роман является одним из наиболее известных романов, 
+  созданных в духе популярного в Англии...", 200, "/WEB-INF/lib/META-INF/resources/books/DubrovskyPushkin.txt");
+  INSERT INTO book VALUES(11, null, "Капитанская дочка", 1, "«Капита́нская до́чка» — исторический роман Александра Пушкина, действие 
+  которого происходит во время восстания Емельяна Пугачёва. Впервые опубликован без указания имени автора
+  в 4-й книжке журнала «Современник», поступившей в продажу в последней декаде 1836 года.", 0,
+  "/WEB-INF/lib/META-INF/resources/books/CaptainDaughter.txt");
+  INSERT INTO book VALUES(11, null, "Медный всадник", 2, "«Медный всадник» — поэма А. С. Пушкина.", 300,
+  "/WEB-INF/lib/META-INF/resources/books/BronzeHorseman.txt");
+  
+  INSERT INTO access_book VALUES(null, 16, 28);
+
